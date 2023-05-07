@@ -29,9 +29,9 @@ const UserDashboard = () => {
         <Text className="text-red-400">Error Occured</Text>
       )}
       {roomsData?.HotelList && (
-        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid gap-4 mt-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 ">
           {roomsData?.HotelList?.map((item) => (
-            <HotelCard key={item?.id} {...item} />
+            <HotelCardSimple key={item?.id} {...item} />
           ))}
         </div>
       )}
@@ -40,6 +40,36 @@ const UserDashboard = () => {
 };
 
 export default UserDashboard;
+
+export const HotelCardSimple = (props: RoomData) => {
+  return (
+    <a href={`/roomDetail/${props?.id}`}>
+      <div className="grid border-2 border-solid border-gray-100 rounded-xl overflow-hidden hover:border-green-600 hover:shadow cursor-pointer text-gray-900 hover:text-green-800 duration-300 hover:rounded-none">
+        <img
+          style={{ objectFit: "cover", height: "200px", width: "100%" }}
+          src={props?.images}
+          alt={props?.hotel?.name}
+        />
+        <div className="grid gap-2 p-2">
+          <div>
+            <Title order={4} lineClamp={2} fw={600}>
+              {props?.hotel?.name}
+            </Title>
+            <Text>Location: {props?.hotel?.address}</Text>
+          </div>
+          <div className="flex justify-between gap-4">
+            <Title order={5} fw={600} className="leading-0">
+              {props?.roomtype}
+            </Title>
+            <Title order={4} color="green" className="font-semibold">
+              Rs:{props?.price}/-
+            </Title>
+          </div>
+        </div>
+      </div>
+    </a>
+  );
+};
 
 export const HotelCard = (props: RoomData) => {
   return (
@@ -53,13 +83,14 @@ export const HotelCard = (props: RoomData) => {
         <div className="grid gap-2 p-2">
           <div className="flex gap-2 justify-between">
             <div>
-              <Title order={3}>{props?.hotel?.name}</Title>
-              <Text>{props?.hotel?.address}</Text>
+              <Title order={4} lineClamp={2}>
+                {props?.hotel?.name}
+              </Title>
+              <Text>Location: {props?.hotel?.address}</Text>
             </div>
             <div className="grid text-right">
-              <Text className="text-sm">Price:</Text>
-              <Title order={3} color="green" className="font-light">
-                Rs:{props?.price} /-
+              <Title order={4} color="green" className="font-semibold">
+                Rs:{props?.price}/-
               </Title>
             </div>
           </div>
@@ -92,6 +123,7 @@ export type RoomData = {
   balcony: boolean;
   swimmingPool: boolean;
   gym: boolean;
+  roomtype: string;
   hotel: {
     id: string;
     name: string;
@@ -110,13 +142,9 @@ export const useGetRooms = (location = "") => {
 
   React.useEffect(() => {
     axiosInstance
-      .get(
-        location
-          ? `/rooms/location/${location}`
-          : "/rooms/"
-      )
+      .get(location ? `/rooms/location/${location}` : "/rooms/")
       .then((d) => {
-        console.log(d.data)
+        console.log(d.data);
         setIsLoading(false);
         setHotelList(d?.data);
       })

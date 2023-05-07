@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomePage from "../pages/Home";
 import ProfilePage from "./../pages/Profile/index";
-import HotelPage from "./../pages/Seller/Hotel";
-import SellerPage from "./../pages/Seller/index";
+import SellerDashboard from "../pages/SellerDashboard/index";
 import AddRoomPage from "./../pages/Room/Room";
-import HomeDashboard from "../pages/UserDashboard/HomeDashboard";
-import HomeDashboardPage from "../pages/UserDashboard/HomeDashboard";
+import HomeDashboard from "../pages/UserDashboard";
+import HomeDashboardPage from "../pages/UserDashboard";
 import RoomDetailPage from "../pages/RoomDetails";
 import LoginPage from "../pages/Auth/LoginPage";
 import RegisterPage from "../pages/Auth/RegisterPage";
+import AboutPage from "../pages/About";
 
 export const Router = createBrowserRouter([
   {
@@ -21,13 +21,10 @@ export const Router = createBrowserRouter([
   },
 
   {
-    path: "/seller",
-    element: <SellerPage />,
+    path: "/sellerDashboard",
+    element: <SellerDashboard />,
   },
-  {
-    path: "/sellerHotel",
-    element: <HotelPage />,
-  },
+
   {
     path: "/addHotelRoom",
     element: <AddRoomPage />,
@@ -43,5 +40,9 @@ export const Router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/about",
+    element: <AboutPage />,
   },
 ]);

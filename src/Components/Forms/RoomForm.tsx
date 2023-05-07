@@ -10,6 +10,7 @@ import {
 } from "@mantine/core";
 import { axiosInstance } from "./../../utils/axios.instance";
 import FormWrapper from "./../../wrapper/Form";
+import { toast } from "react-toastify";
 
 export type RoomFormData = {
   hotelId: string;
@@ -31,7 +32,8 @@ function RoomForm() {
     initialValues: {
       hotelId: "",
       price: 0,
-      image: "",
+      image:
+        "https://images.unsplash.com/photo-1615874959474-d609969a20ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmVkcm9vbXxlbnwwfHwwfHw%3D&w=1000&q=80",
       noOfBed: 0,
       roomNo: 0,
       roomType: "",
@@ -69,10 +71,7 @@ function RoomForm() {
   };
 
   useEffect(() => {
-    window.addEventListener("load", getHotels);
-    return () => {
-      window.removeEventListener("load", getHotels);
-    };
+    if (!hotels.length) getHotels();
   }, [hotels]);
 
   const handleSubmit = async (data: RoomFormData) => {
@@ -80,11 +79,11 @@ function RoomForm() {
       const response = await axiosInstance.post("/rooms", data);
       if (response) {
         form.reset();
-        alert("Entered Data has been sent successfully");
+        toast(response.data?.message ?? "Room Added Sucessfully");
       }
     } catch (error) {
       console.log(error);
-      alert("Your Response Has not sent");
+      toast("Something went wrong");
     }
   };
 

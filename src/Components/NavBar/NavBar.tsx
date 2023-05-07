@@ -9,27 +9,32 @@ const navItemsData: NavItemType[] = [
     link: "/",
   },
   {
-    key: "Hotel_Form",
-    title: "AddHotel",
-    link: "/sellerHotel",
+    key: "about_page",
+    title: "About",
+    link: "/about",
   },
-  {
-    key: "Seller_Form",
-    title: "SellerForm",
-    link: "/seller",
-  },
+  // {
+  //   key: "Hotel_Form",
+  //   title: "AddHotel",
+  //   link: "/sellerHotel",
+  // },
 
-  {
-    key: "Hotel_RoomForm",
-    title: "RoomForm",
-    link: "/addHotelRoom",
-  },
+  // {
+  //   key: "Hotel_RoomForm",
+  //   title: "RoomForm",
+  //   link: "/addHotelRoom",
+  // },
+  // {
+  //   key: "SELLER_DASHBOARD",
+  //   title: "Seller",
+  //   link: "/sellerDashboard",
+  // },
 
-  {
-    key: "User_Dashboard",
-    title: "UserDashboard",
-    link: "/userDashboard",
-  },
+  // {
+  //   key: "User_Dashboard",
+  //   title: "UserDashboard",
+  //   link: "/userDashboard",
+  // },
 ];
 
 type NavItemType = { key?: string; title: string; link: string };
@@ -62,7 +67,11 @@ const NavBar = () => {
           <NavItem {...item} />
         ))}
       </div>
-      <NavItem title="Login" link="/login" />
+      {localStorage?.getItem("token") ? (
+        <NavItem title="Profile" link="/sellerDashboard" />
+      ) : (
+        <NavItem title="Login" link="/login" />
+      )}
     </nav>
   );
 };

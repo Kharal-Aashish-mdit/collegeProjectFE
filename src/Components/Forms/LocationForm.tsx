@@ -1,11 +1,13 @@
 import React from "react";
 import { useForm } from "@mantine/form";
 import { TextInput, Textarea, Button, Switch } from "@mantine/core";
-import { axiosInstance } from './../../utils/axios.instance';
+import { axiosInstance } from "./../../utils/axios.instance";
+import FormWrapper from "../../wrapper/Form";
+import { toast } from "react-toastify";
 
 export type LocationFormData = {
-  name:string
-}
+  name: string;
+};
 
 function LocationForm() {
   const form = useForm<LocationFormData>({
@@ -18,21 +20,19 @@ function LocationForm() {
     try {
       const response = await axiosInstance.post("/locations", data);
       console.log(response.data);
-      if(response) {
+      if (response) {
         form.reset();
+        toast(response.data?.message ?? "Location Added Sucessfully");
       }
     } catch (error) {
       console.error(error);
+      toast("Something went wrong");
     }
   };
 
   return (
-    <div className=" pl-9 pt-5 h-1/2 w-1/2">
-      <form onSubmit={form.onSubmit(handleSubmit)}>
-        <label className="text-xl" htmlFor="HotelForm">
-          Location Form
-        </label>
-
+    <FormWrapper name="Location">
+      <form onSubmit={form.onSubmit(handleSubmit)} className="grid gap-4">
         <TextInput
           label="Location Name:"
           placeholder="Write your preferred Location"
@@ -40,13 +40,9 @@ function LocationForm() {
           {...form.getInputProps("name")}
         />
 
-        <div>
-          <Button className="bg-blue-700 m-4 w-1/2" type="submit">
-            Submit
-          </Button>
-        </div>
+        <Button type="submit">Submit</Button>
       </form>
-    </div>
+    </FormWrapper>
   );
 }
 

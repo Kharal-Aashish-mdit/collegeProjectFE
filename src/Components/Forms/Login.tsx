@@ -28,10 +28,13 @@ const LoginForm = () => {
       const response = await loginAPI(data);
       console.log(response);
       const token = response.data?.token;
+      const isSeller = response.data?.isSeller;
+
       if (response) {
         toast("Login Sucessfull");
         localStorage.setItem("token", token);
-        window.location.href = "/userDashboard";
+        if (isSeller) window.location.href = "/sellerDashboard";
+        else window.location.href = "/";
       }
     } catch (err) {}
     toast("Login Failed");
