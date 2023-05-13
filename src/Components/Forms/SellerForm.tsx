@@ -30,7 +30,10 @@ function SellerForm() {
     <FormWrapper>
       <div className=" pl-9 pt-5 h-1/2 w-1/2">
         <form onSubmit={form.onSubmit(handleSubmit)}>
-          <label className="text-xl" htmlFor="HotelForm">
+          <label
+            className="text-xl"
+            htmlFor="HotelForm"
+          >
             Seller Form
           </label>
 
@@ -47,7 +50,10 @@ function SellerForm() {
             required
             {...form.getInputProps("password")}
           />
-          <Button className="bg-blue-700 m-4 w-1/2" type="submit">
+          <Button
+            className="bg-cyan-700 m-4 w-1/2"
+            type="submit"
+          >
             Submit
           </Button>
         </form>

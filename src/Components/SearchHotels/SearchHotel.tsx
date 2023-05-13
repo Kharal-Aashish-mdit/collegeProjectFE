@@ -63,7 +63,7 @@ function SearchHotel() {
           {...form.getInputProps("rental")}
           />
           <div>
-          <Button className="bg-blue-700 m-4 w-1/2" type="submit">
+          <Button className="bg-cyan-700 m-4 w-1/2" type="submit">
             Submit
           </Button>
         </div>

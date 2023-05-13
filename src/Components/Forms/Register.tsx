@@ -6,6 +6,7 @@ import { TextInput, PasswordInput, Button, Select, Text } from "@mantine/core";
 
 import TextLabel from "../Label";
 import { ROLE_ENUM, registerAPI, registerPOST } from "../../api/apis";
+import FormWrapper from "../../wrapper/Form";
 
 const RegisterForm = () => {
   const navigation = useNavigate();
@@ -39,45 +40,50 @@ const RegisterForm = () => {
     toast("Register Failed");
   };
   return (
-    <form
-      onSubmit={registerForm.onSubmit(submitHandler)}
-      className="grid gap-4 w-full max-w-sm"
-    >
-      <div className="grid gap-4 grid-cols-2">
+    <FormWrapper name="Register">
+      <form
+        onSubmit={registerForm.onSubmit(submitHandler)}
+        className="grid gap-4 w-full max-w-sm mx-auto"
+      >
+        <div className="grid gap-4 grid-cols-2">
+          <TextInput
+            label={<TextLabel value="Firstname" />}
+            {...registerForm.getInputProps("firstname")}
+          />
+          <TextInput
+            label={<TextLabel value="Lastname" />}
+            {...registerForm.getInputProps("lastname")}
+          />
+        </div>
         <TextInput
-          label={<TextLabel value="Firstname" />}
-          {...registerForm.getInputProps("firstname")}
+          label={<TextLabel value="Email" />}
+          {...registerForm.getInputProps("email")}
         />
-        <TextInput
-          label={<TextLabel value="Lastname" />}
-          {...registerForm.getInputProps("lastname")}
+        <PasswordInput
+          label={<TextLabel value="Password" />}
+          {...registerForm.getInputProps("password")}
         />
-      </div>
-      <TextInput
-        label={<TextLabel value="Email" />}
-        {...registerForm.getInputProps("email")}
-      />
-      <PasswordInput
-        label={<TextLabel value="Password" />}
-        {...registerForm.getInputProps("password")}
-      />
-      <Select
-        {...registerForm.getInputProps("role")}
-        label={<TextLabel value="Account Type" />}
-        placeholder="User"
-        data={[
-          { value: "seller", label: "Seller" },
-          { value: "user", label: "User" },
-        ]}
-      />
+        <Select
+          {...registerForm.getInputProps("role")}
+          label={<TextLabel value="Account Type" />}
+          placeholder="User"
+          data={[
+            { value: "seller", label: "Seller" },
+            { value: "user", label: "User" },
+          ]}
+        />
 
-      <Button type="submit" className="mt-2">
-        Register
-      </Button>
-      <Text className="font-semibold mt-2">
-        Already have a account ? <Link to="/login">Login</Link>
-      </Text>
-    </form>
+        <Button
+          type="submit"
+          className="mt-2 bg-cyan-700"
+        >
+          Register
+        </Button>
+        <Text className="font-semibold mt-2">
+          Already have a account ? <Link to="/login">Login</Link>
+        </Text>
+      </form>
+    </FormWrapper>
   );
 };
 

@@ -32,7 +32,10 @@ function LocationForm() {
 
   return (
     <FormWrapper name="Location">
-      <form onSubmit={form.onSubmit(handleSubmit)} className="grid gap-4">
+      <form
+        onSubmit={form.onSubmit(handleSubmit)}
+        className="grid gap-4"
+      >
         <TextInput
           label="Location Name:"
           placeholder="Write your preferred Location"
@@ -40,7 +43,12 @@ function LocationForm() {
           {...form.getInputProps("name")}
         />
 
-        <Button type="submit">Submit</Button>
+        <Button
+          type="submit"
+          className="bg-cyan-700"
+        >
+          Submit
+        </Button>
       </form>
     </FormWrapper>
   );

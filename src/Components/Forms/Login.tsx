@@ -6,6 +6,7 @@ import { TextInput, PasswordInput, Button, Text } from "@mantine/core";
 import TextLabel from "../Label";
 import { loginAPI, loginPOST } from "../../api/apis";
 import { Link } from "react-router-dom";
+import FormWrapper from "../../wrapper/Form";
 
 const LoginForm = () => {
   const loginForm = useForm<loginPOST>({
@@ -39,23 +40,30 @@ const LoginForm = () => {
     toast("Login Failed");
   };
   return (
-    <form
-      onSubmit={loginForm.onSubmit(submitHandler)}
-      className="grid gap-4 w-full max-w-sm"
-    >
-      <TextInput
-        label={<TextLabel value="Email" />}
-        {...loginForm.getInputProps("email")}
-      />
-      <PasswordInput
-        label={<TextLabel value="Password" />}
-        {...loginForm.getInputProps("password")}
-      />
-      <Text className="font-semibold mt-2">
-        Does not have a account ? <Link to="/register">register</Link>
-      </Text>
-      <Button type="submit">Login</Button>
-    </form>
+    <FormWrapper name="Login">
+      <form
+        onSubmit={loginForm.onSubmit(submitHandler)}
+        className="grid gap-4 w-full max-w-sm mx-auto"
+      >
+        <TextInput
+          label={<TextLabel value="Email" />}
+          {...loginForm.getInputProps("email")}
+        />
+        <PasswordInput
+          label={<TextLabel value="Password" />}
+          {...loginForm.getInputProps("password")}
+        />
+        <Text className="font-semibold mt-2">
+          Does not have a account ? <Link to="/register">register</Link>
+        </Text>
+        <Button
+          type="submit"
+          className="bg-cyan-700"
+        >
+          Login
+        </Button>
+      </form>
+    </FormWrapper>
   );
 };
 

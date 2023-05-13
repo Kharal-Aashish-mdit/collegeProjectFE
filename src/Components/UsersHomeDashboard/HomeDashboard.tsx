@@ -11,7 +11,10 @@ const UserDashboard = () => {
   return (
     <div className="p-4">
       <div className="grid gap-4 my-4">
-        <Title order={2} className="text-center text-green-500 ">
+        <Title
+          order={2}
+          className="text-center text-cyan-700 "
+        >
           Search Hotel Rooms
         </Title>
         <Select
@@ -31,7 +34,10 @@ const UserDashboard = () => {
       {roomsData?.HotelList && (
         <div className="grid gap-4 mt-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 ">
           {roomsData?.HotelList?.map((item) => (
-            <HotelCardSimple key={item?.id} {...item} />
+            <HotelCardSimple
+              key={item?.id}
+              {...item}
+            />
           ))}
         </div>
       )}
@@ -44,26 +50,39 @@ export default UserDashboard;
 export const HotelCardSimple = (props: RoomData) => {
   return (
     <a href={`/roomDetail/${props?.id}`}>
-      <div className="grid border-2 border-solid border-gray-100 rounded-xl overflow-hidden hover:border-green-600 hover:shadow cursor-pointer text-gray-900 hover:text-green-800 duration-300 hover:rounded-none">
+      <div className="grid border-2 border-solid border-gray-100 rounded-xl overflow-hidden hover:border-cyan-700 hover:shadow cursor-pointer text-gray-900 hover:text-cyan-700 duration-300 hover:shadow">
         <img
           style={{ objectFit: "cover", height: "200px", width: "100%" }}
           src={props?.images}
           alt={props?.hotel?.name}
         />
-        <div className="grid gap-2 p-2">
+        <div className="grid gap-2 p-4">
           <div>
-            <Title order={4} lineClamp={2} fw={600}>
+            <Title
+              order={3}
+              lineClamp={2}
+              fw={600}
+            >
               {props?.hotel?.name}
             </Title>
-            <Text>Location: {props?.hotel?.address}</Text>
-          </div>
-          <div className="flex justify-between gap-4">
-            <Title order={5} fw={600} className="leading-0">
-              {props?.roomtype}
-            </Title>
-            <Title order={4} color="green" className="font-semibold">
-              Rs:{props?.price}/-
-            </Title>
+            <div className="flex justify-between gap-4 items-center">
+              <div className="grid gap-2">
+                <Text>Location: {props?.hotel?.address}</Text>
+                <Title
+                  order={5}
+                  fw={600}
+                  className="leading-0"
+                >
+                  Type: {props?.roomtype}
+                </Title>
+              </div>
+              <Title
+                order={4}
+                className="font-semibold bg-cyan-600 px-2 text-white rounded"
+              >
+                Rs:{props?.price}/-
+              </Title>
+            </div>
           </div>
         </div>
       </div>
@@ -74,7 +93,7 @@ export const HotelCardSimple = (props: RoomData) => {
 export const HotelCard = (props: RoomData) => {
   return (
     <Link to={`/roomDetail/${props?.id}`}>
-      <div className="grid border border-solid border-gray-300 rounded-xl overflow-hidden hover:border-green-600 hover:shadow cursor-pointer text-gray-900 hover:text-green-800 duration-300 hover:rounded-none">
+      <div className="grid border border-solid border-gray-300 rounded-xl overflow-hidden hover:border-cyan-700 hover:shadow cursor-pointer text-gray-900 hover:text-cyan-800 duration-300 hover:rounded-none">
         <img
           style={{ objectFit: "cover", height: "200px", width: "100%" }}
           src={props?.images}
@@ -83,19 +102,30 @@ export const HotelCard = (props: RoomData) => {
         <div className="grid gap-2 p-2">
           <div className="flex gap-2 justify-between">
             <div>
-              <Title order={4} lineClamp={2}>
+              <Title
+                order={3}
+                lineClamp={2}
+              >
                 {props?.hotel?.name}
               </Title>
               <Text>Location: {props?.hotel?.address}</Text>
             </div>
             <div className="grid text-right">
-              <Title order={4} color="green" className="font-semibold">
+              <Title
+                order={4}
+                color="green"
+                className="font-semibold"
+              >
                 Rs:{props?.price}/-
               </Title>
             </div>
           </div>
           <div>
-            <Title order={5} fw={600} className="leading-0">
+            <Title
+              order={5}
+              fw={600}
+              className="leading-0"
+            >
               Features:
             </Title>
             <div className="text-sm flex gap-4 flex-wrap">
@@ -175,6 +205,5 @@ export const useGetLocations = () => {
       });
   }, []);
 
-  
   return { isLoading, isError, LocationList };
 };

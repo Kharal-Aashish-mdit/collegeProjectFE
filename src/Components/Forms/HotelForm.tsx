@@ -88,7 +88,10 @@ function HotelForm() {
           {...form.getInputProps("locationId")}
         />
 
-        <Button className="mt-4" type="submit">
+        <Button
+          className="mt-4 bg-cyan-700"
+          type="submit"
+        >
           Submit
         </Button>
       </form>

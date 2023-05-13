@@ -6,7 +6,7 @@ const AboutPage = () => {
   return (
     <MainWrapper>
       <div className="p-8 gap-4 grid justify-items-center">
-        <Title color="blue">Yatru: Room Recommendation System</Title>
+        <Title color="cyan">Yatru: Room Recommendation System</Title>
         <Text>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate,
           quo minima. Cumque quibusdam rerum beatae eum, voluptates voluptate
@@ -27,7 +27,10 @@ const AboutPage = () => {
           iure aliquid laborum unde fugiat molestiae natus cumque perferendis
           facilis.
         </Text>
-        <Title color="blue" order={2}>
+        <Title
+          color="cyan"
+          order={2}
+        >
           Project Created By:
         </Title>
         <ul className="flex gap-4 list-none font-semibold">

@@ -44,6 +44,19 @@ function RoomForm() {
       swimmingPool: false,
       gym: false,
     },
+    validate: {
+      hotelId: (v) => (v ? null : "Select a hotel"),
+      roomNo: (value) => {
+        if (!value || value <= 0) return "At least one room is required";
+      },
+      noOfBed: (value) => {
+        if (!value || value <= 0) return "At least one bed is required";
+      },
+      price: (value) => {
+        if (!value || value <= 0) return "Price is required";
+      },
+      roomType: (v) => (v ? null : "Select a room type"),
+    },
   });
 
   type hotelIdData = {
@@ -155,19 +168,31 @@ function RoomForm() {
             {...form.getInputProps("sceneryFacing")}
           />
 
-          <Switch label="Ticketing" {...form.getInputProps("ticketing")} />
+          <Switch
+            label="Ticketing"
+            {...form.getInputProps("ticketing")}
+          />
 
           <Switch
             label="Swimming Pool"
             {...form.getInputProps("swimmingPool")}
           />
 
-          <Switch label="Rental" {...form.getInputProps("rental")} />
+          <Switch
+            label="Rental"
+            {...form.getInputProps("rental")}
+          />
 
-          <Switch label="Gym" {...form.getInputProps("gym")} />
+          <Switch
+            label="Gym"
+            {...form.getInputProps("gym")}
+          />
         </div>
 
-        <Button className="mt-4" type="submit">
+        <Button
+          className="mt-4 bg-cyan-700"
+          type="submit"
+        >
           Submit
         </Button>
       </form>

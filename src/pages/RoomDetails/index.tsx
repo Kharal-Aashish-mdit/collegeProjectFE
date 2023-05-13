@@ -7,7 +7,8 @@ import {
 } from "../../Components/UsersHomeDashboard/HomeDashboard";
 import { axiosInstance } from "./../../utils/axios.instance";
 import MainWrapper from "../../wrapper/Main";
-import { Title, Text } from "@mantine/core";
+import { Title, Text, Button } from "@mantine/core";
+import BookingForm from "../../Components/Forms/BookingForm";
 
 const RoomDetailPage = () => {
   const id = useParams().id as string;
@@ -16,13 +17,17 @@ const RoomDetailPage = () => {
 
   return (
     <MainWrapper>
-      <div className="flex gap-4 p-4">
+      <div className="sm:flex grid gap-4 p-4">
         <div className="w-full ">
           {roomData?.RoomData && <HotelDetail {...roomData?.RoomData!} />}
         </div>
-        <div className="max-w-[300px] w-full grid gap-4 ">
+        <div className="max-w-[300px] w-full gap-4 flex flex-col ">
+          <Title className="text-lg text-cyan-700">Recommendations:</Title>
           {suggestionData?.SuggestionsList?.map((item) => (
-            <HotelCardSimple key={item?.id} {...item} />
+            <HotelCardSimple
+              key={item?.id}
+              {...item}
+            />
           ))}
         </div>
       </div>
@@ -76,6 +81,7 @@ export const useGetRecommendation = (id: string) => {
 };
 
 export const HotelDetail = (props: RoomData) => {
+  const [showBooking, setShowBooking] = React.useState<boolean>(false);
   return (
     <div className="gap-4 grid">
       <img
@@ -85,23 +91,36 @@ export const HotelDetail = (props: RoomData) => {
         alt={props?.hotel?.name}
       />
       <div className="grid gap-2 p-2">
-        <div className="flex gap-2 justify-between">
-          <div>
+        <div className="flex gap-4 justify-between">
+          <div className="grid gap-2">
             <Title>{props?.hotel?.name}</Title>
-            <Text>{props?.hotel?.address}</Text>
+            <Text>Location: {props?.hotel?.address}</Text>
           </div>
-          <div className="flex gap-2 text-right items-end">
-            <Text className="text-lg font-semibold">Price:</Text>
-            <Title color="green" className="font-light">
-              Rs:{props?.price} /-
+          <div className="grid gap-2">
+            <Title
+              order={2}
+              className="font-semibold text-cyan-700"
+            >
+              Rs: {props?.price}
             </Title>
+            <Button
+              className="bg-cyan-700"
+              onClick={() => setShowBooking(!showBooking)}
+            >
+              Book a room
+            </Button>
           </div>
         </div>
+        {showBooking && <BookingForm />}
         <div>
-          <Title order={2} fw={600} className="leading-0">
+          <Title
+            order={2}
+            fw={600}
+            className="leading-0"
+          >
             Features:
           </Title>
-          <div className="grid gap-4 py-4">
+          <div className="grid gap-4 py-4 grid-cols-2 max-w-lg mr-auto">
             {props?.gym && <li className="ml-4"> Gym</li>}
             {props?.swimmingPool && <li className="ml-4"> SwimmingPool</li>}
             {props?.balcony && <li className="ml-4"> Balcony</li>}

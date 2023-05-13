@@ -25,5 +25,19 @@ export type registerPOST = {
 export const registerAPI = (data: registerPOST) =>
   axiosInstance.post("/sign-up", data);
 
-  export const getUserAPI = () =>
-  axiosInstance.get("/me");
+export const getUserAPI = () => axiosInstance.get("/me");
+
+// BOOKING
+
+export type postBookingType = {
+  roomid: string;
+  name: string;
+  email: string;
+  checkIn: Date;
+  checkOut: Date;
+};
+
+export const postBooking = (data: postBookingType) =>
+  axiosInstance.post(`/booking/user`, data);
+
+export const getBookingsUser = () => axiosInstance.get(`/booking/user`);

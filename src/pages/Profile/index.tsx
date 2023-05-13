@@ -45,7 +45,12 @@ const ProfilePage = () => {
           <Badge>{user?.role}</Badge>
         </div>
         <div className="flex justify-start">
-          <Button onClick={() => logOutHandler()}>Log Out</Button>
+          <Button
+            className="bg-cyan-700"
+            onClick={() => logOutHandler()}
+          >
+            Log Out
+          </Button>
         </div>
       </div>
       <div>

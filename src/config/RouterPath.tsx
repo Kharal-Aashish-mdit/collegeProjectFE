@@ -9,6 +9,7 @@ import RoomDetailPage from "../pages/RoomDetails";
 import LoginPage from "../pages/Auth/LoginPage";
 import RegisterPage from "../pages/Auth/RegisterPage";
 import AboutPage from "../pages/About";
+import BookingsPage from "../pages/Bookings";
 
 export const Router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ export const Router = createBrowserRouter([
   {
     path: "/profile",
     element: <ProfilePage />,
+  },
+  {
+    path: "/bookings",
+    element: <BookingsPage />,
   },
 
   // {
