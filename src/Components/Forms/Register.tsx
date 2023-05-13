@@ -15,7 +15,7 @@ const RegisterForm = () => {
       password: "",
       firstname: "",
       lastname: "",
-      role: ROLE_ENUM.user,
+      role: "",
     },
     validate: {
       email: (value) => {
@@ -62,6 +62,7 @@ const RegisterForm = () => {
         {...registerForm.getInputProps("password")}
       />
       <Select
+        {...registerForm.getInputProps("role")}
         label={<TextLabel value="Account Type" />}
         placeholder="User"
         data={[

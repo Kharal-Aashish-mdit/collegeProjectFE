@@ -31,22 +31,20 @@ const SellerDashboardPage = () => {
   };
   const onClickHandler = (e: ActiveFormEnum) => setActive(e);
   return (
-    <MainWrapper>
-      <div className="grid gap-4 ">
-        <div className="flex gap-4 p-8">
-          <Button onClick={() => onClickHandler(ActiveFormEnum.locationForm)}>
-            Add Location
-          </Button>
-          <Button onClick={() => onClickHandler(ActiveFormEnum.hotelForm)}>
-            Add Hotel
-          </Button>
-          <Button onClick={() => onClickHandler(ActiveFormEnum.roomsForm)}>
-            Add Rooms
-          </Button>
-        </div>
-        {ActiveFormRenderer()}
+    <div className="grid gap-4 ">
+      <div className="flex gap-4 p-8">
+        <Button onClick={() => onClickHandler(ActiveFormEnum.locationForm)}>
+          Add Location
+        </Button>
+        <Button onClick={() => onClickHandler(ActiveFormEnum.hotelForm)}>
+          Add Hotel
+        </Button>
+        <Button onClick={() => onClickHandler(ActiveFormEnum.roomsForm)}>
+          Add Rooms
+        </Button>
       </div>
-    </MainWrapper>
+      {ActiveFormRenderer()}
+    </div>
   );
 };
 

@@ -33,8 +33,7 @@ const LoginForm = () => {
       if (response) {
         toast("Login Sucessfull");
         localStorage.setItem("token", token);
-        if (isSeller) window.location.href = "/sellerDashboard";
-        else window.location.href = "/";
+        window.location.href = "/profile";
       }
     } catch (err) {}
     toast("Login Failed");

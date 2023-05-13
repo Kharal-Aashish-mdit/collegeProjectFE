@@ -4,7 +4,7 @@ import HomeDashboard from "../../Components/UsersHomeDashboard/HomeDashboard";
 import UserDashboard from "../../Components/UsersHomeDashboard/HomeDashboard";
 
 function UserDashboardPage() {
-  return <MainWrapper>{/* <UserDashboard /> */}</MainWrapper>;
+  return <></>;
 }
 
 export default UserDashboardPage;

@@ -175,5 +175,6 @@ export const useGetLocations = () => {
       });
   }, []);
 
+  
   return { isLoading, isError, LocationList };
 };

@@ -68,7 +68,7 @@ const NavBar = () => {
         ))}
       </div>
       {localStorage?.getItem("token") ? (
-        <NavItem title="Profile" link="/sellerDashboard" />
+        <NavItem title="Profile" link="/profile" />
       ) : (
         <NavItem title="Login" link="/login" />
       )}

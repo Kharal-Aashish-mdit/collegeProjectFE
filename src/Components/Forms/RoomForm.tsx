@@ -147,7 +147,7 @@ function RoomForm() {
           <Switch
             className="gap-x-4"
             label="Balcony"
-            {...form.getInputProps("Balcony")}
+            {...form.getInputProps("balcony")}
           />
 
           <Switch
@@ -155,14 +155,14 @@ function RoomForm() {
             {...form.getInputProps("sceneryFacing")}
           />
 
-          <Switch label="Ticketing" {...form.getInputProps("Ticketing")} />
+          <Switch label="Ticketing" {...form.getInputProps("ticketing")} />
 
           <Switch
             label="Swimming Pool"
-            {...form.getInputProps("SwimmingPool")}
+            {...form.getInputProps("swimmingPool")}
           />
 
-          <Switch label="Rental" {...form.getInputProps("Rental")} />
+          <Switch label="Rental" {...form.getInputProps("rental")} />
 
           <Switch label="Gym" {...form.getInputProps("gym")} />
         </div>

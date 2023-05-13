@@ -18,9 +18,12 @@ export type registerPOST = {
   password: string;
   firstname: string;
   lastname: string;
-  role: ROLE_ENUM;
+  role: string;
   // role: "seller" | "user";
 };
 
 export const registerAPI = (data: registerPOST) =>
   axiosInstance.post("/sign-up", data);
+
+  export const getUserAPI = () =>
+  axiosInstance.get("/me");

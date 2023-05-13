@@ -19,19 +19,23 @@ export const Router = createBrowserRouter([
     path: "/register",
     element: <RegisterPage />,
   },
-
   {
-    path: "/sellerDashboard",
-    element: <SellerDashboard />,
+    path: "/profile",
+    element: <ProfilePage />,
   },
+
+  // {
+  //   path: "/sellerDashboard",
+  //   element: <SellerDashboard />,
+  // },
+  // {
+  //   path: "/userDashboard",
+  //   element: <HomeDashboardPage />,
+  // },
 
   {
     path: "/addHotelRoom",
     element: <AddRoomPage />,
-  },
-  {
-    path: "/userDashboard",
-    element: <HomeDashboardPage />,
   },
   {
     path: "/roomDetail/:id",
