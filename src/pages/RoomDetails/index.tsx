@@ -1,19 +1,16 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import FormWrapper from "../../wrapper/Form";
-import {
-  HotelCardSimple,
-  RoomData,
-} from "../../Components/UsersHomeDashboard/HomeDashboard";
-import { axiosInstance } from "./../../utils/axios.instance";
-import MainWrapper from "../../wrapper/Main";
-import { Title, Text, Button } from "@mantine/core";
-import BookingForm from "../../Components/Forms/BookingForm";
+import React from "react"
+import { useParams } from "react-router-dom"
+import FormWrapper from "../../wrapper/Form"
+import { HotelCardSimple, RoomData } from "../../Components/UsersHomeDashboard/HomeDashboard"
+import { axiosInstance } from "./../../utils/axios.instance"
+import MainWrapper from "../../wrapper/Main"
+import { Title, Text, Button } from "@mantine/core"
+import BookingForm from "../../Components/Forms/BookingForm"
 
 const RoomDetailPage = () => {
-  const id = useParams().id as string;
-  const roomData = useGetRoom(id);
-  const suggestionData = useGetRecommendation(id);
+  const id = useParams().id as string
+  const roomData = useGetRoom(id)
+  const suggestionData = useGetRecommendation(id)
 
   return (
     <MainWrapper>
@@ -29,57 +26,57 @@ const RoomDetailPage = () => {
         </div>
       </div>
     </MainWrapper>
-  );
-};
+  )
+}
 
-export default RoomDetailPage;
+export default RoomDetailPage
 
 export const useGetRoom = (id: string) => {
-  const [isLoading, setIsLoading] = React.useState<boolean>(true);
-  const [isError, setIsError] = React.useState<boolean>(false);
-  const [RoomData, setRoomData] = React.useState<RoomData>();
+  const [isLoading, setIsLoading] = React.useState<boolean>(true)
+  const [isError, setIsError] = React.useState<boolean>(false)
+  const [RoomData, setRoomData] = React.useState<RoomData>()
 
   React.useEffect(() => {
     axiosInstance
       .get(`/rooms/${id}`)
       .then((d) => {
-        setIsLoading(false);
-        setRoomData(d?.data);
+        setIsLoading(false)
+        setRoomData(d?.data)
       })
       .catch((e) => {
-        console.log(e);
-        setIsError(true);
-      });
-  }, []);
-  console.log(RoomData);
+        console.log(e)
+        setIsError(true)
+      })
+  }, [])
+  console.log(RoomData)
 
-  return { isLoading, isError, RoomData };
-};
+  return { isLoading, isError, RoomData }
+}
 
 export const useGetRecommendation = (id: string) => {
-  const [isLoading, setIsLoading] = React.useState<boolean>(true);
-  const [isError, setIsError] = React.useState<boolean>(false);
-  const [SuggestionsList, setSuggestionsList] = React.useState<RoomData[]>([]);
+  const [isLoading, setIsLoading] = React.useState<boolean>(true)
+  const [isError, setIsError] = React.useState<boolean>(false)
+  const [SuggestionsList, setSuggestionsList] = React.useState<RoomData[]>([])
 
   React.useEffect(() => {
     if (id)
       axiosInstance
         .get(`/rooms/findSuggestions/${id}`)
         .then((d) => {
-          setIsLoading(false);
-          setSuggestionsList(d?.data);
+          setIsLoading(false)
+          setSuggestionsList(d?.data)
         })
         .catch((e) => {
-          console.log(e);
-          setIsError(true);
-        });
-  }, [id]);
+          console.log(e)
+          setIsError(true)
+        })
+  }, [id])
 
-  return { isLoading, isError, SuggestionsList };
-};
+  return { isLoading, isError, SuggestionsList }
+}
 
 export const HotelDetail = (props: RoomData) => {
-  const [showBooking, setShowBooking] = React.useState<boolean>(false);
+  const [showBooking, setShowBooking] = React.useState<boolean>(false)
   return (
     <div className="gap-4 grid">
       <img
@@ -91,17 +88,19 @@ export const HotelDetail = (props: RoomData) => {
       <div className="grid gap-2 p-2">
         <div className="flex gap-4 justify-between">
           <div className="grid gap-2">
-            <Title>{props?.hotel?.name}</Title>
-            <Text>Location: {props?.hotel?.address}</Text>
+            <div>
+              <Text className="text-sm leading-sm ml-1 text-cyan-700">
+                {props?.hotel?.address}
+              </Text>
+              <Title className="leading-sm">{props?.hotel?.name}</Title>
+            </div>
+            <Text>Contact: {props?.phone}</Text>
           </div>
-          <div className="grid gap-2">
-            <Title order={2} className="font-semibold text-cyan-700">
+          <div className="grid gap-2 min-w-[200px]">
+            <Title order={2} className="font-semibold text-cyan-700 text-center">
               Rs: {props?.price}
             </Title>
-            <Button
-              className="bg-cyan-700"
-              onClick={() => setShowBooking(!showBooking)}
-            >
+            <Button className="bg-cyan-700" onClick={() => setShowBooking(!showBooking)}>
               Book a room
             </Button>
           </div>
@@ -122,5 +121,5 @@ export const HotelDetail = (props: RoomData) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
