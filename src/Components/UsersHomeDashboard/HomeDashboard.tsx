@@ -11,10 +11,7 @@ const UserDashboard = () => {
   return (
     <div className="p-4">
       <div className="grid gap-4 my-4">
-        <Title
-          order={2}
-          className="text-center text-cyan-700 "
-        >
+        <Title order={2} className="text-center text-cyan-700 ">
           Search Hotel Rooms
         </Title>
         <Select
@@ -34,10 +31,7 @@ const UserDashboard = () => {
       {roomsData?.HotelList && (
         <div className="grid gap-4 mt-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 ">
           {roomsData?.HotelList?.map((item) => (
-            <HotelCardSimple
-              key={item?.id}
-              {...item}
-            />
+            <HotelCardSimple key={item?.id} {...item} />
           ))}
         </div>
       )}
@@ -58,21 +52,13 @@ export const HotelCardSimple = (props: RoomData) => {
         />
         <div className="grid gap-2 p-4">
           <div>
-            <Title
-              order={3}
-              lineClamp={2}
-              fw={600}
-            >
+            <Title order={3} lineClamp={2} fw={600}>
               {props?.hotel?.name}
             </Title>
             <div className="flex justify-between gap-4 items-center">
               <div className="grid gap-2">
                 <Text>Location: {props?.hotel?.address}</Text>
-                <Title
-                  order={5}
-                  fw={600}
-                  className="leading-0"
-                >
+                <Title order={5} fw={600} className="leading-0">
                   Type: {props?.roomtype}
                 </Title>
               </div>
@@ -102,30 +88,19 @@ export const HotelCard = (props: RoomData) => {
         <div className="grid gap-2 p-2">
           <div className="flex gap-2 justify-between">
             <div>
-              <Title
-                order={3}
-                lineClamp={2}
-              >
+              <Title order={3} lineClamp={2}>
                 {props?.hotel?.name}
               </Title>
               <Text>Location: {props?.hotel?.address}</Text>
             </div>
             <div className="grid text-right">
-              <Title
-                order={4}
-                color="green"
-                className="font-semibold"
-              >
+              <Title order={4} color="green" className="font-semibold">
                 Rs:{props?.price}/-
               </Title>
             </div>
           </div>
           <div>
-            <Title
-              order={5}
-              fw={600}
-              className="leading-0"
-            >
+            <Title order={5} fw={600} className="leading-0">
               Features:
             </Title>
             <div className="text-sm flex gap-4 flex-wrap">
@@ -134,6 +109,7 @@ export const HotelCard = (props: RoomData) => {
               {props?.balcony && <li className="ml-4"> Balcony</li>}
               {props?.sceneryFacing && <li className="ml-4"> SceneryFacing</li>}
               {props?.ticketing && <li className="ml-4"> Ticketing</li>}
+              {props?.rental && <li className="ml-4">Rental</li>}
             </div>
           </div>
         </div>

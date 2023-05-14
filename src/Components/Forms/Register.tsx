@@ -36,8 +36,9 @@ const RegisterForm = () => {
         toast(response?.data?.message ?? "Register Sucessfull");
         navigation("/login");
       }
-    } catch (err) {}
-    toast("Register Failed");
+    } catch (err) {
+      toast("Register Failed");
+    }
   };
   return (
     <FormWrapper name="Register">
@@ -73,10 +74,7 @@ const RegisterForm = () => {
           ]}
         />
 
-        <Button
-          type="submit"
-          className="mt-2 bg-cyan-700"
-        >
+        <Button type="submit" className="mt-2 bg-cyan-700">
           Register
         </Button>
         <Text className="font-semibold mt-2">

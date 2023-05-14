@@ -24,10 +24,7 @@ const RoomDetailPage = () => {
         <div className="max-w-[300px] w-full gap-4 flex flex-col ">
           <Title className="text-lg text-cyan-700">Recommendations:</Title>
           {suggestionData?.SuggestionsList?.map((item) => (
-            <HotelCardSimple
-              key={item?.id}
-              {...item}
-            />
+            <HotelCardSimple key={item?.id} {...item} />
           ))}
         </div>
       </div>
@@ -54,6 +51,7 @@ export const useGetRoom = (id: string) => {
         setIsError(true);
       });
   }, []);
+  console.log(RoomData);
 
   return { isLoading, isError, RoomData };
 };
@@ -97,10 +95,7 @@ export const HotelDetail = (props: RoomData) => {
             <Text>Location: {props?.hotel?.address}</Text>
           </div>
           <div className="grid gap-2">
-            <Title
-              order={2}
-              className="font-semibold text-cyan-700"
-            >
+            <Title order={2} className="font-semibold text-cyan-700">
               Rs: {props?.price}
             </Title>
             <Button
@@ -113,11 +108,7 @@ export const HotelDetail = (props: RoomData) => {
         </div>
         {showBooking && <BookingForm />}
         <div>
-          <Title
-            order={2}
-            fw={600}
-            className="leading-0"
-          >
+          <Title order={2} fw={600} className="leading-0">
             Features:
           </Title>
           <div className="grid gap-4 py-4 grid-cols-2 max-w-lg mr-auto">
@@ -126,6 +117,7 @@ export const HotelDetail = (props: RoomData) => {
             {props?.balcony && <li className="ml-4"> Balcony</li>}
             {props?.sceneryFacing && <li className="ml-4"> SceneryFacing</li>}
             {props?.ticketing && <li className="ml-4"> Ticketing</li>}
+            {props?.rental && <li className="ml-4"> Rental</li>}
           </div>
         </div>
       </div>

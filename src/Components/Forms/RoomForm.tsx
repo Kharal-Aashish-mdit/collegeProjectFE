@@ -168,31 +168,19 @@ function RoomForm() {
             {...form.getInputProps("sceneryFacing")}
           />
 
-          <Switch
-            label="Ticketing"
-            {...form.getInputProps("ticketing")}
-          />
+          <Switch label="Ticketing" {...form.getInputProps("ticketing")} />
 
           <Switch
             label="Swimming Pool"
             {...form.getInputProps("swimmingPool")}
           />
 
-          <Switch
-            label="Rental"
-            {...form.getInputProps("rental")}
-          />
+          <Switch label="Rental" {...form.getInputProps("rental")} />
 
-          <Switch
-            label="Gym"
-            {...form.getInputProps("gym")}
-          />
+          <Switch label="Gym" {...form.getInputProps("gym")} />
         </div>
 
-        <Button
-          className="mt-4 bg-cyan-700"
-          type="submit"
-        >
+        <Button className="mt-4 bg-cyan-700" type="submit">
           Submit
         </Button>
       </form>

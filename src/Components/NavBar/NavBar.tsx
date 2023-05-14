@@ -9,14 +9,19 @@ const navItemsData: NavItemType[] = [
     link: "/bookings",
   },
   {
-    key: "about_page",
-    title: "About",
-    link: "/about",
+    key: "login",
+    title: "Login",
+    link: "/login",
   },
   {
     key: "register_page",
     title: "Register",
     link: "/register",
+  },
+  {
+    key: "about_page",
+    title: "About",
+    link: "/about",
   },
 ];
 
@@ -39,28 +44,27 @@ const NavItem = ({ title, link }: NavItemType) => {
 
 const NavBar = () => {
   return (
-    <nav className="flex justify-between items-center bg-cyan-700 text-gray-800 py-2 px-8">
-      <Link to="/">
-        <Title
-          order={3}
-          className="text-white hover:text-yellow-400"
-        >
-          Yatru
-        </Title>
-      </Link>
+    <div className="bg-cyan-700  py-2 px-8">
+      <nav className="flex justify-between items-center bg-cyan-700 text-gray-800 py-2 px-8">
+        <Link to="/">
+          <Title order={3} className="text-white hover:text-yellow-400">
+            Yatru
+          </Title>
+        </Link>
 
-      <div className="flex gap-6">
-        {localStorage?.getItem("token") && (
-          <NavItem
-            title="Profile"
-            link="/profile"
-          />
-        )}
-        {navItemsData?.map((item) => (
-          <NavItem {...item} />
-        ))}
+        <div className="flex gap-6">
+          {localStorage?.getItem("token") && (
+            <NavItem title="Profile" link="/profile" />
+          )}
+          {navItemsData?.map((item) => (
+            <NavItem {...item} />
+          ))}
+        </div>
+      </nav>
+      <div className="text-white text-justify pl-8 pt-6">
+        <Title>Find your next destination</Title>
       </div>
-    </nav>
+    </div>
   );
 };
 

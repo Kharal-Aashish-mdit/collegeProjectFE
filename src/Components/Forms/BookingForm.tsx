@@ -41,8 +41,9 @@ const BookingForm = () => {
         toast(response?.data?.message ?? "Booking Sucessfull");
         navigation("/");
       }
-    } catch (err) {}
-    toast("Booking Failed");
+    } catch (err) {
+      toast("Booking Failed");
+    }
   };
   return (
     <FormWrapper name="Book a Room">
@@ -61,23 +62,14 @@ const BookingForm = () => {
         <div>
           <TextLabel value="Check In" />
 
-          <Input
-            type="date"
-            {...bookingForm.getInputProps("checkIn")}
-          />
+          <Input type="date" {...bookingForm.getInputProps("checkIn")} />
         </div>
         <div>
           <TextLabel value="Check Out" />
-          <Input
-            type="date"
-            {...bookingForm.getInputProps("checkOut")}
-          />
+          <Input type="date" {...bookingForm.getInputProps("checkOut")} />
         </div>
 
-        <Button
-          type="submit"
-          className="mt-2 bg-cyan-700"
-        >
+        <Button type="submit" className="mt-2 bg-cyan-700">
           Book a Room
         </Button>
       </form>
