@@ -1,6 +1,7 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Title, Text } from "@mantine/core";
+import React from "react"
+import { Link, NavLink } from "react-router-dom"
+import { Title, Text } from "@mantine/core"
+import { UserOutlined } from "@ant-design/icons"
 
 const navItemsData: NavItemType[] = [
   {
@@ -23,9 +24,9 @@ const navItemsData: NavItemType[] = [
     title: "About",
     link: "/about",
   },
-];
+]
 
-type NavItemType = { key?: string; title: string; link: string };
+type NavItemType = { key?: string; title: string; link: string }
 
 const NavItem = ({ title, link }: NavItemType) => {
   return (
@@ -39,8 +40,8 @@ const NavItem = ({ title, link }: NavItemType) => {
     >
       <Text className="font-semibold">{title}</Text>
     </NavLink>
-  );
-};
+  )
+}
 
 const NavBar = () => {
   return (
@@ -54,18 +55,28 @@ const NavBar = () => {
 
         <div className="flex gap-6">
           {localStorage?.getItem("token") && (
-            <NavItem title="Profile" link="/profile" />
+            <NavLink
+              to="/profile"
+              className={({ isActive }) =>
+                `${
+                  isActive ? "text-white" : "text-gray-300"
+                }  md:hover:text-amber-300 list-none no-underline flex gap-2`
+              }
+            >
+              <UserOutlined />
+              <Text className="font-semibold">Profile</Text>
+            </NavLink>
           )}
           {navItemsData?.map((item) => (
             <NavItem {...item} />
           ))}
         </div>
       </nav>
-      <div className="text-white text-justify pl-8 pt-6">
+      {/* <div className="text-white text-justify pl-8 pt-6">
         <Title>Find your next destination</Title>
-      </div>
+      </div> */}
     </div>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

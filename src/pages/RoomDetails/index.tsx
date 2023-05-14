@@ -6,6 +6,7 @@ import { axiosInstance } from "./../../utils/axios.instance"
 import MainWrapper from "../../wrapper/Main"
 import { Title, Text, Button } from "@mantine/core"
 import BookingForm from "../../Components/Forms/BookingForm"
+import { PhoneOutlined, PushpinOutlined } from "@ant-design/icons"
 
 const RoomDetailPage = () => {
   const id = useParams().id as string
@@ -88,13 +89,15 @@ export const HotelDetail = (props: RoomData) => {
       <div className="grid gap-2 p-2">
         <div className="flex gap-4 justify-between">
           <div className="grid gap-2">
-            <div>
-              <Text className="text-sm leading-sm ml-1 text-cyan-700">
-                {props?.hotel?.address}
-              </Text>
-              <Title className="leading-sm">{props?.hotel?.name}</Title>
+            <Title className="leading-sm">{props?.hotel?.name}</Title>
+            <div className="flex gap-2 text-cyan-700">
+              <PushpinOutlined />
+              <Text className="text-sm leading-sm ml-1">{props?.hotel?.address}</Text>
             </div>
-            <Text>Contact: {props?.phone}</Text>
+            <div className="flex gap-2 ">
+              <PhoneOutlined rotate={90} />
+              <Text>{props?.phone}</Text>
+            </div>
           </div>
           <div className="grid gap-2 min-w-[200px]">
             <Title order={2} className="font-semibold text-cyan-700 text-center">
