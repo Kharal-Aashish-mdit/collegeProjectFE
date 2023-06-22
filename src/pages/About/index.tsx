@@ -7,30 +7,23 @@ const AboutPage = () => {
     <MainWrapper>
       <div className="p-8 gap-4 grid justify-items-center">
         <Title color="cyan">Yatru: Room Recommendation System</Title>
-        <Text>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate,
-          quo minima. Cumque quibusdam rerum beatae eum, voluptates voluptate
-          quisquam delectus aut maxime repellat, laborum sit ipsa, sint eos
-          explicabo veritatis? Saepe, dignissimos nesciunt. Repellat dolore
-          velit ullam nemo soluta aspernatur tempora cupiditate vitae fuga,
-          itaque necessitatibus consequuntur ipsa exercitationem in enim. Sed at
-          corrupti laborum est impedit repudiandae, sint non reprehenderit ullam
-          molestias ratione libero. Voluptates molestiae enim quia asperiores
-          fuga ipsam sequi tempore, porro omnis beatae a eos vero perspiciatis
-          tenetur expedita aliquid vel deleniti nostrum ratione, dolorem
-          reprehenderit quisquam! Adipisci dolores odio cumque quos molestias,
-          iure soluta! Ex iusto quisquam animi natus ullam delectus et
-          dignissimos deleniti fugiat laborum, modi adipisci commodi saepe
-          suscipit possimus ipsa. Ad nobis hic nihil perferendis repellat
-          facilis natus animi. Assumenda, culpa vel quia quod nesciunt
-          voluptatum nemo illo ratione totam nostrum vero reprehenderit fuga
-          iure aliquid laborum unde fugiat molestiae natus cumque perferendis
-          facilis.
+        <Text className="px-48">
+          In this project, we developed an online hotel room finder using a
+          structured approach. The project aims to provide users with a
+          convenient and efficient way to search for hotel rooms. This project
+          adheres to the ideology and aims to provide accessibility and facility
+          in the online hotel room finding. This system offers a recommendation
+          system for hotel rooms to select the most appropriate hotel room in
+          the area based on a user's preferences. This project attempts to
+          utilize the software engineering principles in the essence. <br /> The
+          platform is developed using cutting-edge technologies such as Node.js,
+          Typescript, and React etc. Additionally, it offers recommendation
+          tools that let users find hotels based on their preferences and book a
+          room from the recommended list if it's a good fit. The platform uses
+          advanced algorithms such as cosine similarity to provide accurate
+          recommendations to its users.
         </Text>
-        <Title
-          color="cyan"
-          order={2}
-        >
+        <Title color="cyan" order={2}>
           Project Created By:
         </Title>
         <ul className="flex gap-4 list-none font-semibold">

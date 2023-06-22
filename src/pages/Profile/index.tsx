@@ -16,7 +16,7 @@ const ProfilePage = () => {
   const [user, setUser] = React.useState<userType>();
   const [Loading, setLoading] = React.useState<boolean>();
 
-  React.useState(() => {
+  React.useEffect(() => {
     if (!user || Loading)
       getUserAPI()
         .then((d) => {
@@ -45,10 +45,7 @@ const ProfilePage = () => {
           <Badge>{user?.role}</Badge>
         </div>
         <div className="flex justify-start">
-          <Button
-            className="bg-cyan-700"
-            onClick={() => logOutHandler()}
-          >
+          <Button className="bg-cyan-700" onClick={() => logOutHandler()}>
             Log Out
           </Button>
         </div>

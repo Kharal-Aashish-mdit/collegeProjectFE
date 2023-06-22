@@ -1,13 +1,13 @@
-import { Select, Title, Text } from "@mantine/core"
-import axios from "axios"
-import React from "react"
-import { axiosInstance } from "../../utils/axios.instance"
-import { Link } from "react-router-dom"
+import { Select, Title, Text } from "@mantine/core";
+import axios from "axios";
+import React from "react";
+import { axiosInstance } from "../../utils/axios.instance";
+import { Link } from "react-router-dom";
 
 const UserDashboard = () => {
-  const [userSearch, setUserSearch] = React.useState<string>()
-  const locationData = useGetLocations()
-  const roomsData = useGetRooms(userSearch)
+  const [userSearch, setUserSearch] = React.useState<string>();
+  const locationData = useGetLocations();
+  const roomsData = useGetRooms(userSearch);
   return (
     <div className="p-4">
       <div className="grid gap-4 my-4">
@@ -25,19 +25,21 @@ const UserDashboard = () => {
         />
       </div>
       {roomsData?.isLoading && <Text>Loading</Text>}
-      {roomsData?.isError && <Text className="text-red-400">Error Occured</Text>}
+      {roomsData?.isError && (
+        <Text className="text-red-400">Error Occured</Text>
+      )}
       {roomsData?.HotelList && (
-        <div className="grid gap-4 mt-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 ">
+        <div className="grid gap-4 mt-8 sm:grid-cols-2 md:grid-cols-4 ">
           {roomsData?.HotelList?.map((item) => (
             <HotelCardSimple key={item?.id} {...item} />
           ))}
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default UserDashboard
+export default UserDashboard;
 
 export const HotelCardSimple = (props: RoomData) => {
   return (
@@ -60,7 +62,10 @@ export const HotelCardSimple = (props: RoomData) => {
                   Type: {props?.roomtype}
                 </Title>
               </div>
-              <Title order={4} className="font-semibold bg-cyan-600 px-2 text-white rounded">
+              <Title
+                order={4}
+                className="font-semibold bg-cyan-600 px-2 text-white rounded"
+              >
                 Rs:{props?.price}/-
               </Title>
             </div>
@@ -68,8 +73,8 @@ export const HotelCardSimple = (props: RoomData) => {
         </div>
       </div>
     </a>
-  )
-}
+  );
+};
 
 export const HotelCard = (props: RoomData) => {
   return (
@@ -110,72 +115,72 @@ export const HotelCard = (props: RoomData) => {
         </div>
       </div>
     </Link>
-  )
-}
+  );
+};
 
 export type RoomData = {
-  id: string
-  price: number
-  images: string
-  phone: number
-  roomNo: number
-  sceneryFacing: boolean
-  rental: boolean
-  ticketing: boolean
-  balcony: boolean
-  swimmingPool: boolean
-  gym: boolean
-  roomtype: string
+  id: string;
+  price: number;
+  images: string;
+  phone: number;
+  roomNo: number;
+  sceneryFacing: boolean;
+  rental: boolean;
+  ticketing: boolean;
+  balcony: boolean;
+  swimmingPool: boolean;
+  gym: boolean;
+  roomtype: string;
   hotel: {
-    id: string
-    name: string
-    address: string
-  }
-}
+    id: string;
+    name: string;
+    address: string;
+  };
+};
 export type LocationData = {
-  id: string
-  name: string
-}
+  id: string;
+  name: string;
+};
 
 export const useGetRooms = (location = "") => {
-  const [isLoading, setIsLoading] = React.useState<boolean>(true)
-  const [isError, setIsError] = React.useState<boolean>(false)
-  const [HotelList, setHotelList] = React.useState<RoomData[]>()
+  const [isLoading, setIsLoading] = React.useState<boolean>(true);
+  const [isError, setIsError] = React.useState<boolean>(false);
+  const [HotelList, setHotelList] = React.useState<RoomData[]>();
 
   React.useEffect(() => {
     axiosInstance
       .get(location ? `/rooms/location/${location}` : "/rooms/")
       .then((d) => {
-        console.log(d.data)
-        setIsLoading(false)
-        setHotelList(d?.data)
+        console.log(d.data);
+        setIsLoading(false);
+        setHotelList(d?.data);
       })
       .catch((e) => {
-        console.log(e)
-        setIsError(true)
-      })
-  }, [location])
+        console.log(e);
+        setIsError(true);
+      });
+  }, [location]);
 
-  return { isLoading, isError, HotelList }
-}
+  return { isLoading, isError, HotelList };
+};
 
 export const useGetLocations = () => {
-  const [isLoading, setIsLoading] = React.useState<boolean>(true)
-  const [isError, setIsError] = React.useState<boolean>(false)
-  const [LocationList, setLocationList] = React.useState<LocationData[]>()
+  const [isLoading, setIsLoading] = React.useState<boolean>(true);
+  const [isError, setIsError] = React.useState<boolean>(false);
+  const [LocationList, setLocationList] = React.useState<LocationData[]>();
 
   React.useEffect(() => {
     axiosInstance
       .get(`/locations`)
       .then((d) => {
-        setIsLoading(false)
-        setLocationList(d?.data)
+        setIsLoading(false);
+        setLocationList(d?.data);
       })
       .catch((e) => {
-        console.log(e)
-        setIsError(true)
-      })
-  }, [])
+        console.log(e);
+        setIsError(true);
+      });
+  }, []);
 
-  return { isLoading, isError, LocationList }
-}
+  return { isLoading, isError, LocationList };
+};
